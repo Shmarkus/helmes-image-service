@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+}
+
+group "com.helmes"
+version "1.0-SNAPSHOT"
+
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.springframework.boot"
+
+apply from: "gradle/docker.gradle"
+
+springBoot {
+    mainClass = "com.helmes.imageservice.ImageServiceApp"
+}
+
+bootRun {
+    systemProperties System.properties
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile 'com.google.code.gson:gson:2.8.1'
+    testCompile("junit:junit:4.12")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+clean {
+    delete "out"
+}

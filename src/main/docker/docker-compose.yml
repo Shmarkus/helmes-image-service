@@ -1,0 +1,6 @@
+version: '2'
+services:
+    image-service:
+        image: markuskarileet/image-service
+        ports:
+            - 80:80
